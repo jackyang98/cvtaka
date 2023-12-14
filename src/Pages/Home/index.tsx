@@ -1,12 +1,11 @@
-import { async } from 'q'
 import {
     FullPage
 } from './styles.ts'
-import { useEffect } from 'react';
 import axios from 'axios';
 import * as xlsx from 'xlsx';
+import React, { useEffect } from 'react';
 
-export default function HomePage() {
+const HomePage = () => {
 
     const getData = async () => {
         const response = await axios({
@@ -18,6 +17,8 @@ export default function HomePage() {
         const workbook = xlsx.read(response.data, { type: 'array' });
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
+
+        console.log(sheet)
 
         // Process each cell in the sheet
         const cells = xlsx.utils.sheet_to_json(sheet, { header: 1, raw: true });
@@ -37,3 +38,5 @@ export default function HomePage() {
         </FullPage>
     )
 }
+
+export default HomePage;

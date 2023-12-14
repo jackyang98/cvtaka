@@ -1,8 +1,9 @@
 import {
     FullPage
 } from './styles.ts'
+import React from 'react';
 
-export default function AboutPage() {
+const AboutPage = () => {
 
     return (
         <FullPage>
@@ -11,3 +12,5 @@ export default function AboutPage() {
         </FullPage>
     )
 }
+
+export default AboutPage;
